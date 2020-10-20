@@ -6,16 +6,40 @@ import edu.ale.rentofbilds.service.item.interfaces.ICrudItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
+
 @Service
 public class ItemServiceImpl implements ICrudItem {
 
     @Autowired
-    FakeData data;
+    FakeData trash;
 
     @Override
     public Item create(Item item) {
-        return null;
+        if (item.getId() != null) {
+            this.getAll().add(item);
+        } else {
+
+            Integer id =
+                    //Берем список всех айтемов и превращаем в stream
+                    this.getAll().stream()
+                            // Превращаем его в стрим Айдишников
+                            .map(el -> el.getId())
+                            //Айдишники превращаем со Стринга в Интеджер
+                            .mapToInt(el -> Integer.valueOf(el))
+                            //Находим максимальный !!!
+                            .max().orElse(0);
+            //Максимальный ID  увеличиваем на 1 и превращаем
+            item.setId(String.valueOf(id+1));
+            // И превращаем в стринг!
+            // нашему item  присваиваем этот ID
+            // и закидываем в список
+            item.setCreated_at(LocalDateTime.now());
+            item.setModified_at(LocalDateTime.now());
+            this.getAll().add(item);
+        }
+        return item;
     }
 
     @Override
@@ -38,7 +62,7 @@ public class ItemServiceImpl implements ICrudItem {
     @Override
     public List<Item> getAll() {
 
-        return data.getItems();
+        return trash.getItems();
     }
 
 }
