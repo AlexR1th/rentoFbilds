@@ -5,16 +5,20 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet"
-          type="text/css" href="<@spring.url '/css/style.css'/>"/>
+    <link rel="stylesheet" type="text/css" href="<@spring.url '/css/style.css'/>"/>
+    <link type="text/css" href="/static/interfaceStyle/style.css" rel="stylesheet">
 </head>
 <body>
 
-<h3>Item List</h3>
+<h1>Item List</h1>
 <br>
+<div class="div1">
+<button type="button" style="border-color: #FF0000;border-radius: 50%;background-color: #00CED1" onclick="window.location.href = '/index.html'">Back</button>
+<#--<a href="/index.html" class="button1">Back</a>-->
+</div>
 <div>
 
-    <table class="table table-striped">
+    <table class="table table-dark">
         <thead>
         <tr>
             <th>id</th>
@@ -22,10 +26,12 @@
             <th>Description</th>
             <th>Created</th>
             <th>Modified</th>
+            <th>Delete</th>
+            <th>Edit</th>
         </tr>
         </thead>
         <tbody>
-        <#list items as element> <!--Цикл по всем element !! -->
+        <#list spisok as element> <!--Цикл по всем element !! -->
             <!--Для каждого element в списке items , который мы получили
              из контроллера . -----------------------------
              Формируем строку <tr>. У этой строки есть ..5.. ячеек
@@ -37,6 +43,8 @@
                 <td>${element.description}</td>
                 <td>${element.created_at}</td>
                 <td>${element.modified_at}</td>
+                <td><a href="/web/item/delete/${element.id}" class="btn btn-outline-danger">Delete</a></td>
+                <td><a href="/web/item/edit/${element.id}" class="btn btn-outline-success">Edit</a></td>
             </tr>
         </#list>
         </tbody>
