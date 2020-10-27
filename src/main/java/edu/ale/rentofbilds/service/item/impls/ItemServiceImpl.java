@@ -17,6 +17,7 @@ public class ItemServiceImpl implements ICrudItem {
 
     @Override
     public Item create(Item item) {
+        System.out.println(item);
         if (item.getId() != null) {
             this.getAll().add(item);
         } else {

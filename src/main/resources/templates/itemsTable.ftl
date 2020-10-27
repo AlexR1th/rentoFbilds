@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="<@spring.url '/css/style.css'/>"/>
     <link type="text/css" href="/static/interfacestyle/style.css" rel="stylesheet">
 </head>
@@ -13,8 +14,10 @@
 <h1>Item List</h1>
 <br>
 <div class="div1">
-<button type="button" style="border-color: #FF0000;border-radius: 50%;background-color: #00CED1" onclick="window.location.href = '/index.html'">Back</button>
-<#--<a href="/index.html" class="button1">Back</a>-->
+    <button type="button" style="border-color: #FF0000;border-radius: 50%;background-color: #00CED1"
+            onclick="window.location.href = '/index.html'">Back
+    </button>
+    <#--<a href="/index.html" class="button1">Back</a>-->
 </div>
 <div>
 
@@ -49,7 +52,7 @@
         </#list>
         </tbody>
     </table>
-
+    <a href="/web/item/create" class="btn btn-warning">Create</a>
 </div>
 </body>
 </html>
