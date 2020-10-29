@@ -32,7 +32,7 @@ public class ItemServiceImpl implements ICrudItem {
                             //Находим максимальный !!!
                             .max().orElse(0);
             //Максимальный ID  увеличиваем на 1 и превращаем
-            item.setId(String.valueOf(id+1));
+            item.setId(String.valueOf(id + 1));
             // И превращаем в стринг!
             // нашему item  присваиваем этот ID
             // и закидываем в список
@@ -50,7 +50,13 @@ public class ItemServiceImpl implements ICrudItem {
 
     @Override
     public Item update(Item item) {
-        return null;
+        String id = item.getId();
+        Item itemToUpdate = this.getAll().stream().filter(el -> el.getId().equals(id))
+                .findFirst().orElse(null);
+        int index = this.getAll().indexOf(itemToUpdate);
+        item.setModified_at(LocalDateTime.now());
+        this.getAll().set(index, item);
+        return item;
     }
 
     @Override
@@ -65,5 +71,6 @@ public class ItemServiceImpl implements ICrudItem {
 
         return trash.getItems();
     }
+
 
 }

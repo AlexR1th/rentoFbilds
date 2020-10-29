@@ -47,7 +47,7 @@
                 <td>${element.created_at}</td>
                 <td>${element.modified_at}</td>
                 <td><a href="/web/item/delete/${element.id}" class="btn btn-outline-danger">Delete</a></td>
-                <td><a href="/web/item/edit/${element.id}" class="btn btn-outline-success">Edit</a></td>
+                <td><a href="/web/item/update/${element.id}" class="btn btn-outline-success">Edit</a></td>
             </tr>
         </#list>
         </tbody>

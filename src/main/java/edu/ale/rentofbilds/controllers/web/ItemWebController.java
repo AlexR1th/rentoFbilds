@@ -1,6 +1,5 @@
 package edu.ale.rentofbilds.controllers.web;
 
-import edu.ale.rentofbilds.data.FakeData;
 import edu.ale.rentofbilds.model.Item;
 import edu.ale.rentofbilds.service.item.impls.ItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import edu.project.rent.forms.ItemForm;
-
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Controller
 @RequestMapping("/web/item")
@@ -57,4 +51,30 @@ public class ItemWebController {
         service.create(item);
         return "redirect:/web/item/all";
     }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public String update(Model model, @PathVariable("id") String id) {
+        Item item = service.get(id);
+        ItemForm itemForm = new ItemForm();
+        itemForm.setId(item.getId());
+        itemForm.setName(item.getName());
+        itemForm.setDescription(item.getDescription());
+//        itemForm.setCreated_at(item.getCreated_at().toString());
+//        itemForm.setModified_at(item.getModified_at().toString());
+
+        model.addAttribute("form", itemForm);
+
+        return "updateItem";
+
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public String update(Model model, @PathVariable("id") String id, @ModelAttribute("form") ItemForm form) {
+        Item item = service.get(id);
+        item.setName(form.getName());
+        item.setDescription(form.getDescription());
+        service.update(item);
+        return "redirect:/web/item/all";
+    }
 }
+
