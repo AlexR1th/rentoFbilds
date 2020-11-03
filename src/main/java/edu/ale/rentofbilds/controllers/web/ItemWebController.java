@@ -1,8 +1,7 @@
 package edu.ale.rentofbilds.controllers.web;
 
 import edu.ale.rentofbilds.model.Item;
-import edu.ale.rentofbilds.service.item.impls.ItemServiceImpl;
-import edu.ale.rentofbilds.service.item.interfaces.CrudItemMongoImpl;
+import edu.ale.rentofbilds.service.item.impls.CrudItemMongoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +15,8 @@ public class ItemWebController {
     @Autowired
     CrudItemMongoImpl service;
 
+    // rest возращает JASON
     @RequestMapping("/all")
-        // rest возращает JASON
     String getAll(Model model) {
         model.addAttribute("spisok", service.getAll());
         return "itemsTable";

@@ -2,9 +2,10 @@ package edu.ale.rentofbilds.controllers.rest;
 
 import edu.ale.rentofbilds.data.FakeData;
 import edu.ale.rentofbilds.model.Client;
+import edu.ale.rentofbilds.model.Item;
+import edu.ale.rentofbilds.service.client.impls.CrudClientServiceFakeImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -16,10 +17,27 @@ import java.util.stream.Stream;
 @RequestMapping("/api/client")
 public class ClientRestController {
     @Autowired
-    FakeData data;
+    CrudClientServiceFakeImpl service;
 
     @RequestMapping("/list")
-    List<Client> getClients(){
-        return data.getClients();
+    List<Client> getClients() {
+        System.out.println(service.getAll());
+        return service.getAll();
+    }
+
+    @RequestMapping("/delete/{id}")
+    Client deleteById(@PathVariable("id") String id) {
+        return service.delete(id);
+    }
+
+    @RequestMapping("/get/{id}")
+    Client getById(@PathVariable("id") String id) {
+        return service.get(id);
+    }
+
+    @PostMapping("/create")
+    Client create(@RequestBody Client client) {
+        return service.create(client);
     }
 }
+

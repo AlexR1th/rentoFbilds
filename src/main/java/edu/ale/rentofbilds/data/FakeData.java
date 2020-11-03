@@ -14,11 +14,11 @@ import java.util.stream.Stream;
 @Repository
 public class FakeData {
     private List<Item> items = Stream.of(
-            new Item("1", "Coca-Cola", "Drink",
+            new Item(null, "Coca-Cola", "Drink",
                     LocalDateTime.now(), LocalDateTime.now()),
-            new Item("2", "Pepsi", "Drink",
+            new Item(null, "Pepsi", "Drink",
                     LocalDateTime.now(), LocalDateTime.now()),
-            new Item("3", "Sprite", "Drink",
+            new Item(null, "Sprite", "Drink",
                     LocalDateTime.now(), LocalDateTime.now())
     ).collect(Collectors.toList());
 
@@ -31,7 +31,8 @@ public class FakeData {
             ),
             new Client("3", "Bomj EdaaaaGAR", "Chernivtsi pod mostom", "2034982039",
                     LocalDate.of(2002, Month.APRIL, 5), "EWE TOT BOMJ"
-            ), new Client("4", "Bomj VGOSDS", "Chernivtsi pod mostom", "00012312",
+            ),
+            new Client("4", "Bomj VGOSDS", "Chernivtsi pod mostom", "00012312",
                     LocalDate.of(1987, Month.MARCH, 2), "EWE TOT BOMJ"
             )
     ).collect(Collectors.toList());

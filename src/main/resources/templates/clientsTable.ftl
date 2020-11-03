@@ -25,7 +25,7 @@
             <th>id</th>
             <th>Name</th>
             <th>Phone</th>
-            <th>Adres</th>
+            <th>Adress</th>
             <th>Birthday</th>
             <th>Description</th>
 
