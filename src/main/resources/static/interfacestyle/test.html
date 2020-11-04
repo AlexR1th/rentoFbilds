@@ -1,0 +1,162 @@
+<div class="boby1">
+    <button class="butt1" onclick="window.location.href = '/web/client/list'">TABLE Client</button>
+    <!--<a href="/web/client/list" class="button">TABLE Client</a>-->
+    <button class="butt1" onclick="window.location.href = '/web/item/all'">TABLE item</button>
+    <!--<a href="/web/item/all" class="button">Table item</a><br>-->
+    <button class="butt" onclick="window.location.href = '/api/client/list'">REST API Client</button>
+    <!--<a href="/api/client/list" class="button">REST API Client</a><br>-->
+    <button class="butt" onclick="window.location.href = '/api/item/get/all'">Rest API items</button>
+    <!--<a href="/api/item/all" class="button">Rest API items</a><br>-->
+</div>
+
+
+
+
+
+
+
+csss
+* {
+box-sizing: border-box;
+}
+
+:root {
+--background: #E5FFB3;
+--background-accent: #DBF8A3;
+--background-accent-2: #BDE66E;
+--light: #92DE34;
+--dark: #69bc22;
+--text: #025600;
+
+--background-2: #333;
+--background-accent-3: #ff44;
+--background-accent-4: #ff3;
+--light-2: #00CED1;
+--dark-2: #4682B4;
+--text-2: #FF0000;
+}
+
+body {
+background-color: var(--background);
+background-image: linear-gradient(var(--background-accent-2) 50%,
+var(--background-accent) 50%
+), linear-gradient(
+var(--background-accent) 50%,
+var(--background-accent-2) 50%
+);
+background-repeat: no-repeat;
+background-size: 100% 30px;
+background-position: top left, bottom left;
+min-height: 98vh;
+}
+
+div {
+display: block;
+width: 300px;
+margin: 0 auto 0 auto;
+position: absolute;
+left: 0;
+right: 0;
+top: 15vh;
+}
+
+.butt1 {
+display: block;
+cursor: pointer;
+outline: none;
+border: none;
+background-color: var(--light);
+width: 400px;
+height: 70px;
+border-radius: 30px;
+font-size: 1.5rem;
+font-weight: 600;
+color: var(--text);
+box-shadow: 0 0 0 7px var(--light) inset;
+margin-bottom: 15px;
+text-align: center;
+text-decoration-style: unset;
+justify-content: center;
+
+}
+
+.butt1:hover {
+background-image: linear-gradient(
+145deg,
+transparent 10%,
+var(--dark) 10% 20%,
+transparent 20% 30%,
+var(--dark) 30% 40%,
+transparent 40% 50%,
+var(--dark) 50% 60%,
+transparent 60% 70%,
+var(--dark) 70% 80%,
+transparent 80% 90%,
+var(--dark) 90% 100%
+);
+animation: background 3s linear infinite;
+}
+
+.butt {
+display: block;
+cursor: pointer;
+outline: none;
+border: none;
+background-color: var(--light-2);
+width: 400px;
+height: 70px;
+border-radius: 30px;
+font-size: 1.5rem;
+font-weight: 600;
+color: var(--text-2);
+box-shadow: 0 0 0 7px var(--light-2) inset;
+margin-bottom: 15px;
+text-align: center;
+text-decoration-style: unset;
+justify-content: center;
+
+}
+
+.butt:hover {
+background-image: linear-gradient(
+145deg,
+transparent 10%,
+var(--dark-2) 10% 20%,
+transparent 20% 30%,
+var(--dark-2) 30% 40%,
+transparent 40% 50%,
+var(--dark-2) 50% 60%,
+transparent 60% 70%,
+var(--dark-2) 70% 80%,
+transparent 80% 90%,
+var(--dark-2) 90% 100%
+);
+animation: background-2 3s linear infinite;
+}
+
+@keyframes background {
+0% {
+background-position: 0 0;
+}
+100% {
+background-position: 400px 0;
+}
+}
+
+@keyframes background-2 {
+0% {
+background-position: 0 0;
+}
+100% {
+background-position: 400px 0;
+}
+}
+
+h1 {
+color: aqua;
+justify-content: center;
+background: #025600;
+border-radius: 50%;
+text-align: center;
+}
+
