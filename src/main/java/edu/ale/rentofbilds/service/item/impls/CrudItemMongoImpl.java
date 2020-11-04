@@ -24,7 +24,7 @@ public class CrudItemMongoImpl implements ICrudItem {
 
     private List<Item> list = new ArrayList<>();
 
-   // @PostConstruct  // не будет добавлять больше чем нужно..
+   @PostConstruct  // не будет добавлять больше чем нужно..
     void init() {
         list = trash.getItems();
         list.size();
@@ -62,3 +62,12 @@ public class CrudItemMongoImpl implements ICrudItem {
         return repository.findAll();
     }
 }
+/*
+mongodb+srv://alexrith:<password>@cluster0.6sjdx.mongodb.net/test*/
+
+
+//    MongoClientURI uri = new MongoClientURI(
+//            "mongodb+srv://alexrith:<password>@cluster0.6sjdx.mongodb.net/<dbname>?retryWrites=true&w=majority");
+//
+//    MongoClient mongoClient = new MongoClient(uri);
+//    MongoDatabase database = mongoClient.getDatabase("test");
