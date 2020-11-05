@@ -1,6 +1,7 @@
 package edu.ale.rentofbilds.controllers.rest;
 
 import edu.ale.rentofbilds.model.Item;
+import edu.ale.rentofbilds.service.item.impls.CrudItemMongoImpl;
 import edu.ale.rentofbilds.service.item.impls.ItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,8 +11,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/item")
 public class ItemRestController {
+
+//    @Autowired
+//    ItemServiceImpl service;
+
     @Autowired
-    ItemServiceImpl service;
+    CrudItemMongoImpl service;
 
     @RequestMapping("/get/all")
     List<Item> getAll() {
@@ -32,7 +37,12 @@ public class ItemRestController {
     }
 
     @PostMapping("/create")
-    Item create(@RequestBody Item item){
+    Item create(@RequestBody Item item) {
         return service.create(item);
+    }
+
+    @PostMapping("/update")
+    Item update(@RequestBody Item item) {
+        return service.update(item);
     }
 }

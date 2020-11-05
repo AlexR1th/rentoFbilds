@@ -37,7 +37,14 @@ public class ClientRestController {
 
     @PostMapping("/create")
     Client create(@RequestBody Client client) {
+
         return service.create(client);
+    }
+
+    @PutMapping("/update")
+    Client update(@RequestBody Client client) {
+        System.out.println("Hellods sds");
+        return service.update(client);
     }
 }
 

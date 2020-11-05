@@ -24,8 +24,9 @@ public class CrudItemMongoImpl implements ICrudItem {
 
     private List<Item> list = new ArrayList<>();
 
-   @PostConstruct  // не будет добавлять больше чем нужно..
+  // @PostConstruct  // не будет добавлять больше чем нужно..
     void init() {
+       repository.deleteAll();
         list = trash.getItems();
         list.size();
         repository.saveAll(list);
