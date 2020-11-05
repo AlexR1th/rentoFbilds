@@ -1,0 +1,86 @@
+
+body {
+    background-color: lightgray;
+    position: relative;
+    display: flex;
+}
+
+.full {
+    display: flex;
+}
+
+.butbody {
+    background-color: #00CED1;
+    position: relative;
+    border-color: black;
+    border: 1px;
+    width: 25%;
+    justify-content: center;
+    padding-top: 0%;
+}
+
+.butt {
+    justify-content: center;
+    width: 300px;
+    height: 50px;
+    margin-top: 15px;
+}
+
+.butt:hover {
+    border-radius: 5px 40% 50px;
+    color: white;
+    background-color: black;
+}
+
+.rowleft {
+    border-radius: 5px;
+    position: absolute;
+    justify-content: center;
+    align-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    background-color: white;
+    box-shadow: 0.4em 0.4em 5px rgb(122, 122, 122);
+    width: 300px;
+    height: 600px;
+}
+
+#bild {
+    width: 160px;
+
+}
+
+.rowright {
+    border-radius: 5px;
+    justify-content: center;
+    align-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    background-color: white;
+    box-shadow: 0.4em 0.4em 5px rgb(122, 122, 122);
+    width: 1200px;
+    height: 70px;
+}
+
+.butt1 {
+    border-radius: 5px;
+    background-color: #FF0000;
+    color: white;
+    width: 300px;
+    height: 50px;
+    margin-top: 50px;
+}
+
+.butt1:hover {
+    background-color: darkred;
+    border-radius: 5px 40% 3px;
+}
+
+#photo {
+    justify-content: center;
+    border-radius: 35%;
+    border: 3px solid;
+    margin-left: 350px;
+}
