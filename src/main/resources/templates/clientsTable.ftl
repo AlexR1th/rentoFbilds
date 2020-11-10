@@ -1,6 +1,6 @@
 <#import "/spring.ftl" as spring/>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -24,14 +24,15 @@
         <tr>
             <th>id</th>
             <th>Name</th>
-            <th>Phone</th>
             <th>Adress</th>
+            <th>Phone</th>
             <th>Birthday</th>
             <th>Description</th>
 
         </tr>
         </thead>
         <tbody>
+
         <#list clients as element> <!--Цикл по всем element !! -->
             <!--Для каждого element в списке items , который мы получили
              из контроллера . -----------------------------
@@ -41,17 +42,17 @@
             <tr>
                 <td>${element.id}</td>
                 <td>${element.name}</td>
-                <td>${element.phone}</td>
                 <td>${element.adress}</td>
+                <td>${element.phone}</td>
                 <td>${element.dateOfBirthday}</td>
                 <td>${element.description}</td>
                 <td><a href="/web/client/delete/${element.id}" class="btn btn-outline-danger">Delete</a></td>
-                <td><a href="/web/client/edit/${element.id}" class="btn btn-outline-success">Edit</a></td>
+                <td><a href="/web/client/update/${element.id}" class="btn btn-outline-success">Edit</a></td>
             </tr>
         </#list>
-        </tbody>
+      </tbody>
     </table>
-
+        <a href="/web/client/create" class="btn btn-warning">Create</a>
 </div>
 </body>
 </html>

@@ -4,6 +4,7 @@ import edu.ale.rentofbilds.data.FakeData;
 import edu.ale.rentofbilds.model.Client;
 import edu.ale.rentofbilds.model.Item;
 import edu.ale.rentofbilds.service.client.impls.CrudClientServiceFakeImpl;
+import edu.ale.rentofbilds.service.client.impls.CrudClientServiceMongoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ import java.util.stream.Stream;
 @RequestMapping("/api/client")
 public class ClientRestController {
     @Autowired
-    CrudClientServiceFakeImpl service;
+    CrudClientServiceMongoImpl service;
 
     @RequestMapping("/list")
     List<Client> getClients() {
