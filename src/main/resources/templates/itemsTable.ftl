@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="<@spring.url '/css/style.css'/>"/>
@@ -13,20 +15,36 @@
 
 <h1>Item List</h1>
 <br>
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sorted
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <button class="dropdown-item btn btn-danger" onclick="window.location.href = '/web/item/all/sort/id'">Id</button>
+        <button class="dropdown-item btn btn-danger" onclick="window.location.href = '/web/item/all/sort/name'">Name</button>
+        <button class="dropdown-item btn btn-danger" onclick="window.location.href = '/web/item/all/sort/modified'">Modified</button>
+    </div>
+</div>
+<br>
 <div class="div1">
     <button type="button" style="border-color: #FF0000;border-radius: 50%;background-color: #00CED1"
             onclick="window.location.href = '/index.html'">Back
     </button>
+<#--    <div class="dropdown-menu">-->
+<#--        <a>menu</a>-->
+<#--        <button class="btn btn-outline-success dropdown-item" onclick="window.location.href = '/web/item/all/sort/id'">Id</button>-->
+<#--        <button class="btn btn-outline-success" onclick="window.location.href = '/web/item/all/sort/name'">Name</button>-->
+<#--        <button class="btn btn-outline-success" onclick="window.location.href = '/web/item/all/sort/modified'">Modified</button>-->
+<#--    </div>-->
+
     <#--<a href="/index.html" class="button1">Back</a>-->
 </div>
 <div>
-
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>id</th>
-            <th>Name<button class="btn btn-outline-warning" onclick="window.location.href = '/web/item/all'">back to list unSorting</button>
-                <button class="btn btn-outline-success" onclick="window.location.href = '/web/item/all/sort'">Sorting by Name</button></th>
+            <th>id</th></th>
+            <th>Name</th>
             <th>Description</th>
             <th>Created</th>
             <th>Modified</th>

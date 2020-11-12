@@ -76,9 +76,19 @@ public class ItemWebController {
         service.update(item);
         return "redirect:/web/item/all";
     }
-    @RequestMapping(value = "/all/sort",method = RequestMethod.GET)
+    @RequestMapping(value = "/all/sort/name",method = RequestMethod.GET)
     public String sortedByName(Model model){
         model.addAttribute("spisok", service.getAllSortedByName());
+        return "itemsTable";
+    }
+    @RequestMapping(value = "/all/sort/modified",method = RequestMethod.GET)
+    public String sortedByModified(Model model){
+        model.addAttribute("spisok", service.getAllSortedByModified());
+        return "itemsTable";
+    }
+    @RequestMapping(value = "/all/sort/id",method = RequestMethod.GET)
+    public String sortedById(Model model){
+        model.addAttribute("spisok", service.getAllSortedById());
         return "itemsTable";
     }
 }

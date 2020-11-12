@@ -60,6 +60,7 @@ public class CrudItemMongoImpl implements ICrudItem {
         return item;
     }
 
+
     @Override
     public List<Item> getAll() {
         return repository.findAll();
@@ -68,11 +69,29 @@ public class CrudItemMongoImpl implements ICrudItem {
 
     public List<Item> getAllSortedByName() {
         List<Item> list = repository.findAll();
-        List<Item> sorted = list.stream()
-                .sorted(Comparator.comparing(Item::getName))
+        List<Item> sortedByName = list.stream()
+                .sorted(Comparator.comparing(Item::getName, String.CASE_INSENSITIVE_ORDER))
                 .collect(Collectors.toList());
 
-        return sorted;
+        return sortedByName;
+    }
+
+    public Object getAllSortedByModified() {
+        List<Item> list = repository.findAll();
+        List<Item> sortedByModified = list.stream()
+                .sorted(Comparator.comparing(Item::getModified_at))
+                .collect(Collectors.toList());
+
+        return sortedByModified;
+    }
+
+    public Object getAllSortedById() {
+        List<Item> list = repository.findAll();
+        List<Item> sortedById = list.stream()
+                .sorted(Comparator.comparing(Item::getId))
+                .collect(Collectors.toList());
+
+        return sortedById;
     }
 }
 
