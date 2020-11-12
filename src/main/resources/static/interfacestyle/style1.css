@@ -47,9 +47,7 @@ body {
 }
 
 #bild {
-    width: 180px;
-    height: 100px;
-
+    width: 200px;
 }
 
 .rowright {
@@ -81,7 +79,23 @@ body {
 
 #photo {
     justify-content: center;
-    border-radius: 35%;
-    border: 3px solid;
-    margin-left: 350px;
+    width: 69px;
+    border-radius: 50%;
+    border: 1px solid;
+    margin-left: 259px;
+    margin-top: -9px;
+}
+.serch{
+    position: absolute;
+    justify-content: center;
+    align-content: center;
+    border: 1px solid;
+    margin-left: 890px;
+    margin-bottom: 50px;
+    width: 216px;
+    height: 38%;
+}
+#poisk{
+    position: absolute;
+    margin-left: 700px;
 }
