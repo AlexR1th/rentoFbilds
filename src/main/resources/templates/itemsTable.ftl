@@ -21,11 +21,12 @@
 </div>
 <div>
 
-    <table class="table table-dark">
+    <table class="table table-striped">
         <thead>
         <tr>
             <th>id</th>
-            <th>Name</th>
+            <th>Name<button class="btn btn-outline-warning" onclick="window.location.href = '/web/item/all'">back to list unSorting</button>
+                <button class="btn btn-outline-success" onclick="window.location.href = '/web/item/all/sort'">Sorting by Name</button></th>
             <th>Description</th>
             <th>Created</th>
             <th>Modified</th>

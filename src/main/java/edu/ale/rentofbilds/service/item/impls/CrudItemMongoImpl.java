@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CrudItemMongoImpl implements ICrudItem {
@@ -24,9 +26,9 @@ public class CrudItemMongoImpl implements ICrudItem {
 
     private List<Item> list = new ArrayList<>();
 
-//   @PostConstruct  // не будет добавлять больше чем нужно..
+    //   @PostConstruct  // не будет добавлять больше чем нужно..
     void init() {
-       repository.deleteAll();
+        repository.deleteAll();
         list = trash.getItems();
         list.size();
         repository.saveAll(list);
@@ -46,7 +48,7 @@ public class CrudItemMongoImpl implements ICrudItem {
     }
 
     @Override
-    public Item update(Item  item) {
+    public Item update(Item item) {
         item.setModified_at(LocalDateTime.now());
         return repository.save(item);
     }
@@ -62,7 +64,20 @@ public class CrudItemMongoImpl implements ICrudItem {
     public List<Item> getAll() {
         return repository.findAll();
     }
+
+
+    public List<Item> getAllSortedByName() {
+        List<Item> list = repository.findAll();
+        List<Item> sorted = list.stream()
+                .sorted(Comparator.comparing(Item::getName))
+                .collect(Collectors.toList());
+
+        return sorted;
+    }
 }
+
+
+
 /*
 mongodb+srv://alexrith:<password>@cluster0.6sjdx.mongodb.net/test*/
 
