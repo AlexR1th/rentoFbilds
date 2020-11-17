@@ -1,5 +1,6 @@
 package edu.ale.rentofbilds.service.client.impls;
 
+import edu.ale.rentofbilds.Repository.ClientRepository;
 import edu.ale.rentofbilds.data.FakeData;
 import edu.ale.rentofbilds.model.Client;
 import edu.ale.rentofbilds.model.Item;
@@ -8,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class CrudClientServiceFakeImpl implements ICrudClientService {
@@ -55,4 +58,6 @@ public class CrudClientServiceFakeImpl implements ICrudClientService {
     public List<Client> getAll() {
         return trash.getClients();
     }
+
+
 }

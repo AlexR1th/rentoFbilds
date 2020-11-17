@@ -95,6 +95,26 @@ public class ClientWebController {
         service.update(client);
         return "redirect:/web/client/list";
     }
+    @RequestMapping(value = "/list/sort/name",method = RequestMethod.GET)
+    public String sortedByName(Model model){
+        model.addAttribute("clients", service.getAllSortedByName());
+        return "clientsTable";
+    }
+    @RequestMapping(value = "/list/sort/birthday",method = RequestMethod.GET)
+    public String sortedByModified(Model model){
+        model.addAttribute("clients", service.getAllSortedByBirthday());
+        return "clientsTable";
+    }
+    @RequestMapping(value = "/list/sort/id",method = RequestMethod.GET)
+    public String sortedById(Model model){
+        model.addAttribute("clients", service.getAllSortedById());
+        return "clientsTable";
+    }
+    @RequestMapping(value = "/list/sort/phone",method = RequestMethod.GET)
+    public String sortedByPhone(Model model){
+        model.addAttribute("clients", service.getAllSortedByPhone());
+        return "clientsTable";
+    }
 
 }
 

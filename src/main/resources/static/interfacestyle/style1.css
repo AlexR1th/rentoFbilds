@@ -1,6 +1,7 @@
 
 body {
-    background-color: lightgray;
+    background-image: url("https://image.freepik.com/free-photo/observation-urban-building-business-steel_1127-2397.jpg");
+    background-size: cover;
     position: relative;
     display: flex;
 }
@@ -8,7 +9,6 @@ body {
 .full {
     display: flex;
 }
-
 .butbody {
     background-color: #00CED1;
     position: relative;

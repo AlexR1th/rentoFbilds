@@ -3,6 +3,7 @@ package edu.ale.rentofbilds.controllers.web;
 import edu.ale.rentofbilds.model.Item;
 import edu.ale.rentofbilds.service.item.impls.CrudItemMongoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -91,5 +92,7 @@ public class ItemWebController {
         model.addAttribute("spisok", service.getAllSortedById());
         return "itemsTable";
     }
+
+
 }
 

@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CrudClientServiceMongoImpl implements ICrudClientService {
@@ -78,5 +80,40 @@ public class CrudClientServiceMongoImpl implements ICrudClientService {
     @Override
     public List<Client> getAll() {
         return repository.findAll();
+    }
+
+    public List<Client> getAllSortedByName() {
+        List<Client> list = repository.findAll();
+        List<Client> sortedByName = list.stream()
+                .sorted(Comparator.comparing(Client::getName, String.CASE_INSENSITIVE_ORDER))
+                .collect(Collectors.toList());
+
+        return sortedByName;
+    }
+
+    public Object getAllSortedByBirthday() {
+        List<Client> list = repository.findAll();
+        List<Client> sortedByBirthday = list.stream()
+                .sorted(Comparator.comparing(Client::getDateOfBirthday))
+                .collect(Collectors.toList());
+
+        return sortedByBirthday;
+    }
+
+    public Object getAllSortedById() {
+        List<Client> list = repository.findAll();
+        List<Client> sortedById = list.stream()
+                .sorted(Comparator.comparing(Client::getId))
+                .collect(Collectors.toList());
+
+        return sortedById;
+    }
+    public Object getAllSortedByPhone() {
+        List<Client> list = repository.findAll();
+        List<Client> sortedByPhone = list.stream()
+                .sorted(Comparator.comparing(Client::getPhone))
+                .collect(Collectors.toList());
+
+        return sortedByPhone;
     }
 }
