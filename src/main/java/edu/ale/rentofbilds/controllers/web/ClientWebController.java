@@ -91,7 +91,7 @@ public class ClientWebController {
 //        client.setDateOfBirthday(clientForm.getDateOfBirthday());
         LocalDate birthdayAsDate = LocalDate.parse(birthdayAsString);
         client.setDateOfBirthday(birthdayAsDate);
-        client.setDescription(client.getDescription());
+        client.setDescription(clientForm.getDescription());
         service.update(client);
         return "redirect:/web/client/list";
     }
