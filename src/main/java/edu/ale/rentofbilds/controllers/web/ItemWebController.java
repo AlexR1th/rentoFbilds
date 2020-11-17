@@ -1,5 +1,6 @@
 package edu.ale.rentofbilds.controllers.web;
 
+import edu.ale.rentofbilds.form.SearchForm;
 import edu.ale.rentofbilds.model.Item;
 import edu.ale.rentofbilds.service.item.impls.CrudItemMongoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,17 @@ public class ItemWebController {
     @RequestMapping("/all")
     String getAll(Model model) {
         model.addAttribute("spisok", service.getAll());
+        SearchForm search = new SearchForm();
+        model.addAttribute("search", search);
+        return "itemsTable";
+    }
+
+    @PostMapping("/all")
+    String getAll(@ModelAttribute("search")SearchForm form, Model model) {
+        String name = form.getName();
+        model.addAttribute("spisok", service.getByName(name));
+        SearchForm search = new SearchForm();
+        model.addAttribute("search", search);
         return "itemsTable";
     }
 

@@ -3,6 +3,7 @@ package edu.ale.rentofbilds.controllers.web;
 import edu.ale.rentofbilds.data.FakeData;
 import edu.ale.rentofbilds.form.ClientForm;
 import edu.ale.rentofbilds.model.Client;
+import edu.ale.rentofbilds.model.Gender;
 import edu.ale.rentofbilds.model.Item;
 import edu.ale.rentofbilds.service.client.impls.CrudClientServiceFakeImpl;
 import edu.ale.rentofbilds.service.client.impls.CrudClientServiceMongoImpl;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.jws.WebParam;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -37,8 +40,11 @@ public class ClientWebController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String create(Model model) {
+        List<String> genders = Stream.of(Gender.values()).map(Gender::name)
+                .collect(Collectors.toList());
         ClientForm clientForm = new ClientForm();
         model.addAttribute("form", clientForm);
+        model.addAttribute("genders", genders);
         return "clientAddForm";
     }
 
@@ -70,6 +76,8 @@ public class ClientWebController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public String update(Model model, @PathVariable("id") String id) {
         Client client = service.get(id);
+        List<String> genders = Stream.of(Gender.values()).map(Gender::name)
+                .collect(Collectors.toList());
         ClientForm clientForm = new ClientForm();
         clientForm.setId(client.getId());
         clientForm.setName(client.getName());
@@ -79,6 +87,7 @@ public class ClientWebController {
         clientForm.setDateOfBirthday(client.getDateOfBirthday().toString());
         clientForm.setDescription(client.getDescription());
         model.addAttribute("form", clientForm);
+        model.addAttribute("genders", genders);
         return "updateClient";
 
     }

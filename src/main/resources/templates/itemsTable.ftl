@@ -45,6 +45,13 @@
     </div>
 </div>
 <br>
+<fieldset>
+    <legend>Search</legend>
+    <form name="Item" action="" method="POST">
+        Search:<@spring.formInput "search.name" "" "text"/>
+        <input type="submit" value="search"/>
+    </form>
+</fieldset>
 <div class="div1">
     <button type="button" class="btn btn-outline-primary" onclick="window.location.href = '/index.html'">
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
