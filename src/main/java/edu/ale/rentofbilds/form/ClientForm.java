@@ -3,31 +3,42 @@ package edu.ale.rentofbilds.form;
 import java.time.LocalDate;
 
 public class ClientForm {
-    private String id ="";
-    private String name ="";
-    private String adress ="";
-    private String phone ="";
-    private String dateOfBirthday ="";
-    private String description  ="";
+    private String id = "";
+    private String name = "";
+    private String gender = "";
+    private String adress = "";
+    private String phone = "";
+    private String dateOfBirthday = "";
+    private String description = "";
 
     public ClientForm() {
     }
 
-    public ClientForm(String name, String adress, String phone, String dateOfBirthday, String description) {
+    public ClientForm(String name, String gender, String adress, String phone, String dateOfBirthday, String description) {
         this.name = name;
+        this.gender = gender;
         this.adress = adress;
         this.phone = phone;
         this.dateOfBirthday = dateOfBirthday;
         this.description = description;
     }
 
-    public ClientForm(String id, String name, String adress, String phone, String dateOfBirthday, String description) {
+    public ClientForm(String id, String name, String gender, String adress, String phone, String dateOfBirthday, String description) {
         this.id = id;
         this.name = name;
+        this.gender = gender;
         this.adress = adress;
         this.phone = phone;
         this.dateOfBirthday = dateOfBirthday;
         this.description = description;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getId() {

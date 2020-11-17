@@ -6,11 +6,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
+
 @Document
 public class Client {
     @Id
     private String id;
     private String name;
+    private String gender;
     private String adress;
     private String phone;
     private LocalDate dateOfBirthday;
@@ -21,17 +23,20 @@ public class Client {
     public Client() {
     }
 
-    public Client(String name, String adress, String phone, LocalDate dateOfBirthday, String description) {
+
+    public Client(String name, String gender, String adress, String phone, LocalDate dateOfBirthday, String description) {
         this.name = name;
+        this.gender = gender;
         this.adress = adress;
         this.phone = phone;
         this.dateOfBirthday = dateOfBirthday;
         this.description = description;
     }
 
-    public Client(String id, String name, String adress, String phone, LocalDate dateOfBirthday, String description, LocalDateTime created_at, LocalDateTime modified_at) {
+    public Client(String id, String name, String gender, String adress, String phone, LocalDate dateOfBirthday, String description, LocalDateTime created_at, LocalDateTime modified_at) {
         this.id = id;
         this.name = name;
+        this.gender = gender;
         this.adress = adress;
         this.phone = phone;
         this.dateOfBirthday = dateOfBirthday;
@@ -40,13 +45,22 @@ public class Client {
         this.modified_at = modified_at;
     }
 
-    public Client(String id, String name, String adress, String phone, LocalDate dateOfBirthday, String description) {
+    public Client(String id, String name, String gender, String adress, String phone, LocalDate dateOfBirthday, String description) {
         this.id = id;
         this.name = name;
+        this.gender = gender;
         this.adress = adress;
         this.phone = phone;
         this.dateOfBirthday = dateOfBirthday;
         this.description = description;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getId() {
@@ -131,6 +145,7 @@ public class Client {
         return "Client{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
                 ", adress='" + adress + '\'' +
                 ", phone='" + phone + '\'' +
                 ", dateOfBirthday=" + dateOfBirthday +

@@ -48,6 +48,7 @@ public class ClientWebController {
         client.setName(clientForm.getName());
         client.setAdress(clientForm.getAdress());
         client.setPhone(clientForm.getPhone());
+        client.setGender(clientForm.getGender());
         String birthdayAsString = clientForm.getDateOfBirthday();
 //        client.setDateOfBirthday(clientForm.getDateOfBirthday());
         LocalDate birthdayAsDate = LocalDate.parse(birthdayAsString);
@@ -72,6 +73,7 @@ public class ClientWebController {
         ClientForm clientForm = new ClientForm();
         clientForm.setId(client.getId());
         clientForm.setName(client.getName());
+        clientForm.setGender(client.getGender());
         clientForm.setAdress(client.getAdress());
         clientForm.setPhone(client.getPhone());
         clientForm.setDateOfBirthday(client.getDateOfBirthday().toString());
@@ -85,33 +87,38 @@ public class ClientWebController {
     public String update(Model model, @PathVariable("id") String id, @ModelAttribute("form") ClientForm clientForm) {
         Client client = service.get(id);
         client.setName(clientForm.getName());
+        client.setGender(clientForm.getGender());
         client.setAdress(clientForm.getAdress());
         client.setPhone(clientForm.getPhone());
         String birthdayAsString = clientForm.getDateOfBirthday();
 //        client.setDateOfBirthday(clientForm.getDateOfBirthday());
         LocalDate birthdayAsDate = LocalDate.parse(birthdayAsString);
         client.setDateOfBirthday(birthdayAsDate);
-        client.setDescription(clientForm.getDescription());
+        client.setDescription(client.getDescription());
         service.update(client);
         return "redirect:/web/client/list";
     }
-    @RequestMapping(value = "/list/sort/name",method = RequestMethod.GET)
-    public String sortedByName(Model model){
+
+    @RequestMapping(value = "/list/sort/name", method = RequestMethod.GET)
+    public String sortedByName(Model model) {
         model.addAttribute("clients", service.getAllSortedByName());
         return "clientsTable";
     }
-    @RequestMapping(value = "/list/sort/birthday",method = RequestMethod.GET)
-    public String sortedByModified(Model model){
+
+    @RequestMapping(value = "/list/sort/birthday", method = RequestMethod.GET)
+    public String sortedByModified(Model model) {
         model.addAttribute("clients", service.getAllSortedByBirthday());
         return "clientsTable";
     }
-    @RequestMapping(value = "/list/sort/id",method = RequestMethod.GET)
-    public String sortedById(Model model){
+
+    @RequestMapping(value = "/list/sort/id", method = RequestMethod.GET)
+    public String sortedById(Model model) {
         model.addAttribute("clients", service.getAllSortedById());
         return "clientsTable";
     }
-    @RequestMapping(value = "/list/sort/phone",method = RequestMethod.GET)
-    public String sortedByPhone(Model model){
+
+    @RequestMapping(value = "/list/sort/phone", method = RequestMethod.GET)
+    public String sortedByPhone(Model model) {
         model.addAttribute("clients", service.getAllSortedByPhone());
         return "clientsTable";
     }
