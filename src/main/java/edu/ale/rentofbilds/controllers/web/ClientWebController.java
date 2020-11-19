@@ -2,6 +2,7 @@ package edu.ale.rentofbilds.controllers.web;
 
 import edu.ale.rentofbilds.data.FakeData;
 import edu.ale.rentofbilds.form.ClientForm;
+import edu.ale.rentofbilds.form.SearchForm;
 import edu.ale.rentofbilds.model.Client;
 import edu.ale.rentofbilds.model.Gender;
 import edu.ale.rentofbilds.model.Item;
@@ -11,10 +12,7 @@ import edu.project.rent.forms.ItemForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.jws.WebParam;
 import java.time.LocalDate;
@@ -35,6 +33,17 @@ public class ClientWebController {
     @RequestMapping("/list")
     String getList(Model model) {
         model.addAttribute("clients", service.getAll());
+        SearchForm search = new SearchForm();
+        model.addAttribute("search", search);
+        return "clientsTable";
+    }
+
+    @PostMapping("/list")
+    String getAll(@ModelAttribute("search")SearchForm form, Model model) {
+        String name = form.getName();
+        model.addAttribute("clients", service.getByName(name));
+        SearchForm search = new SearchForm();
+        model.addAttribute("search", search);
         return "clientsTable";
     }
 

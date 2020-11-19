@@ -26,6 +26,13 @@
             aria-haspopup="true" aria-expanded="false">
         Sorted
     </button>
+    <fieldset>
+        <legend>Search</legend>
+        <form name="Client" action="" method="POST">
+            Search:<@spring.formInput "search.name" "" "text"/>
+            <input type="submit" value="search"/>
+        </form>
+    </fieldset>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <#--        <button class="dropdown-item btn btn-danger" onclick="window.location.href = '/web/client/list/sort/id'">Id</button>-->
         <button type="button" class="btn btn-outline-primary"

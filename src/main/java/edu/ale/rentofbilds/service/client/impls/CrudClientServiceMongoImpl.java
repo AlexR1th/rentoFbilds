@@ -3,6 +3,7 @@ package edu.ale.rentofbilds.service.client.impls;
 import edu.ale.rentofbilds.Repository.ClientRepository;
 import edu.ale.rentofbilds.data.FakeData;
 import edu.ale.rentofbilds.model.Client;
+import edu.ale.rentofbilds.model.Item;
 import edu.ale.rentofbilds.service.client.interfaces.ICrudClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -116,4 +117,11 @@ public class CrudClientServiceMongoImpl implements ICrudClientService {
 
         return sortedByPhone;
     }
+    public List<Client> getByName(String name) {
+        if(name.equals(""))return this.getAll();
+        return this.getAll().stream().filter(client -> client.getName().contains(name))
+                .collect(Collectors.toList());
+    }
+
 }
+
