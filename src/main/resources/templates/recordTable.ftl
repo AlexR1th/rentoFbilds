@@ -104,9 +104,9 @@
         <tr>
             <th>id</th>
             <th>Name</th>
-            <th>Gender</th>
-            <th>Adress</th>
-            <th>Phone</th>
+            <th>Description</th>
+            <th>Start</th>
+            <th>Finish</th>
             <th>Birthday</th>
             <th>Description</th>
         </tr>

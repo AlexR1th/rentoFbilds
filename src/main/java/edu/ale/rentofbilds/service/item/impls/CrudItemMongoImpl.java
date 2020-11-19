@@ -18,8 +18,8 @@ import java.util.stream.Collectors;
 @Service
 public class CrudItemMongoImpl implements ICrudItem {
 
-    @Autowired
-    FakeData trash;
+//    @Autowired
+//    FakeData trash;
 
     @Autowired
     ItemRepository repository;
@@ -27,12 +27,12 @@ public class CrudItemMongoImpl implements ICrudItem {
     private List<Item> list = new ArrayList<>();
 
     //   @PostConstruct  // не будет добавлять больше чем нужно..
-    void init() {
-        repository.deleteAll();
-        list = trash.getItems();
-        list.size();
-        repository.saveAll(list);
-    }
+//    void init() {
+//        repository.deleteAll();
+//        list = trash.getItems();
+//        list.size();
+//        repository.saveAll(list);
+//    }
 
     @Override
     public Item create(Item item) {

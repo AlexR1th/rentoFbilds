@@ -17,6 +17,7 @@ import java.util.stream.Stream;
 @RestController
 @RequestMapping("/api/client")
 public class ClientRestController {
+
     @Autowired
     CrudClientServiceMongoImpl service;
 

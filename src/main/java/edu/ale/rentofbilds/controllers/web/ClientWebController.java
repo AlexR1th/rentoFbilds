@@ -38,7 +38,7 @@ public class ClientWebController {
         return "clientsTable";
     }
 
-    @PostMapping("/list")
+    @RequestMapping(value = "/list",method = RequestMethod.POST)
     String getAll(@ModelAttribute("search")SearchForm form, Model model) {
         String name = form.getName();
         model.addAttribute("clients", service.getByName(name));
@@ -120,24 +120,32 @@ public class ClientWebController {
     @RequestMapping(value = "/list/sort/name", method = RequestMethod.GET)
     public String sortedByName(Model model) {
         model.addAttribute("clients", service.getAllSortedByName());
+        SearchForm search = new SearchForm();
+        model.addAttribute("search", search);
         return "clientsTable";
     }
 
     @RequestMapping(value = "/list/sort/birthday", method = RequestMethod.GET)
     public String sortedByModified(Model model) {
         model.addAttribute("clients", service.getAllSortedByBirthday());
+        SearchForm search = new SearchForm();
+        model.addAttribute("search", search);
         return "clientsTable";
     }
 
     @RequestMapping(value = "/list/sort/id", method = RequestMethod.GET)
     public String sortedById(Model model) {
         model.addAttribute("clients", service.getAllSortedById());
+        SearchForm search = new SearchForm();
+        model.addAttribute("search", search);
         return "clientsTable";
     }
 
     @RequestMapping(value = "/list/sort/phone", method = RequestMethod.GET)
     public String sortedByPhone(Model model) {
         model.addAttribute("clients", service.getAllSortedByPhone());
+        SearchForm search = new SearchForm();
+        model.addAttribute("search", search);
         return "clientsTable";
     }
 

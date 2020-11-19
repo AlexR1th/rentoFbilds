@@ -18,8 +18,8 @@ import java.util.stream.Collectors;
 @Service
 public class CrudClientServiceMongoImpl implements ICrudClientService {
 
-    @Autowired
-    FakeData trash;
+//    @Autowired
+//    FakeData trash;
 
     @Autowired
     ClientRepository repository;
@@ -34,12 +34,12 @@ public class CrudClientServiceMongoImpl implements ICrudClientService {
 //    }
 
 //    @PostConstruct
-    void init() {
-        repository.deleteAll();
-        list = trash.getClients();
-        list.size();
-        repository.saveAll(list);
-    }
+//    void init() {
+//        repository.deleteAll();
+//        list = trash.getClients();
+//        list.size();
+//        repository.saveAll(list);
+//    }
 
     @Override
     public Client create(Client client) {
