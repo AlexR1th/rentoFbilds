@@ -3,7 +3,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Client</title>
+    <title>Records</title>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>
@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<h1>Client List</h1>
+<h1>Record List</h1>
 <button onclick="window.location.href = '/web/client/list'">Refresh</button>
 <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
@@ -82,7 +82,7 @@
     <#--<button type="button" style="border-color: #FF0000;border-radius: 50%;" onclick="window.location.href = '/index.html'">Back</button>-->
     <br><#--<a href="/index.html" class="button1">Back</a>-->
 </div>
-<button type="button" class="btn btn-warning" onclick="window.location.href='/web/client/create'">
+<button type="button" class="btn btn-warning" onclick="window.location.href='/web/record/create'">
     Create
     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus" fill="currentColor"
          xmlns="http://www.w3.org/2000/svg">
@@ -90,13 +90,13 @@
               d="M8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10zM13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"></path>
     </svg>
 </button>
-<fieldset>
-    <legend>Search</legend>
-    <form name="Client" action="" method="POST">
-        Search:<@spring.formInput "search.name" "" "text"/>
-        <input type="submit" value="search"/>
-    </form>
-</fieldset>
+<#--<fieldset>-->
+<#--    <legend>Search</legend>-->
+<#--    <form name="Client" action="" method="POST">-->
+<#--        Search:<@spring.formInput "search.name" "" "text"/>-->
+<#--        <input type="submit" value="search"/>-->
+<#--    </form>-->
+<#--</fieldset>-->
 <div>
 
     <table class="table table-striped">
@@ -107,13 +107,16 @@
             <th>Description</th>
             <th>Start</th>
             <th>Finish</th>
-            <th>Birthday</th>
-            <th>Description</th>
+            <th>Client</th>
+            <th>Build</th>
+            <th>Create</th>
+            <th>Modified</th>
+
         </tr>
         </thead>
         <tbody>
 
-        <#list clients as element> <!--Цикл по всем element !! -->
+        <#list records as element> <!--Цикл по всем element !! -->
             <!--Для каждого element в списке items , который мы получили
              из контроллера . -----------------------------
              Формируем строку <tr>. У этой строки есть ..5.. ячеек
@@ -122,11 +125,13 @@
             <tr>
                 <td>${element.id}</td>
                 <td>${element.name}</td>
-                <td>${element.gender}</td>
-                <td>${element.adress}</td>
-                <td>${element.phone}</td>
-                <td>${element.dateOfBirthday}</td>
                 <td>${element.description}</td>
+                <td>${element.start}</td>
+                <td>${element.finish}</td>
+                <td>${element.client.name}</td>
+                <td>${element.build.name}</td>
+                <td>${element.created_at}</td>
+                <td>${element.modified_at}</td>
                 <#--                <td><a href="/web/client/delete/${element.id}" class="btn btn-outline-danger">Delete</a></td>-->
                 <td>
                     <button type="button" class="btn btn-outline-danger"

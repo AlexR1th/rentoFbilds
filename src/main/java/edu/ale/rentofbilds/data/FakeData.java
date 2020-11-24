@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-//@Repository
+@Repository
 public class FakeData {
 
     @Autowired
@@ -46,11 +46,11 @@ public class FakeData {
             new Record("1", "record1", "desk1", LocalDateTime.now()
                     , LocalDateTime.now(), clients.get(0), builds.get(0), LocalDateTime.now(), LocalDateTime.now()),
             new Record("2", "record2", "desk1", LocalDateTime.now()
-                    , LocalDateTime.now(), clients.get(2), builds.get(0), LocalDateTime.now(), LocalDateTime.now()),
+                    , LocalDateTime.now(), clients.get(2), builds.get(3), LocalDateTime.now(), LocalDateTime.now()),
             new Record("3", "record3", "desk1", LocalDateTime.now()
-                    , LocalDateTime.now(), clients.get(4), builds.get(0), LocalDateTime.now(), LocalDateTime.now()),
+                    , LocalDateTime.now(), clients.get(1), builds.get(2), LocalDateTime.now(), LocalDateTime.now()),
             new Record("4", "record4", "desk1", LocalDateTime.now()
-                    , LocalDateTime.now(), clients.get(3), builds.get(0), LocalDateTime.now(), LocalDateTime.now())
+                    , LocalDateTime.now(), clients.get(3), builds.get(1), LocalDateTime.now(), LocalDateTime.now())
     ).collect(Collectors.toList());
     private List<Item> items = Stream.of(
             new Item(null, "Coca-Cola", "Drink",
@@ -63,6 +63,7 @@ public class FakeData {
 
     @PostConstruct
     void init(){
+        recordRepository.deleteAll();
         recordRepository.saveAll(records);
     }
 

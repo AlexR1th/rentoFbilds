@@ -6,6 +6,7 @@ import edu.ale.rentofbilds.service.record.intefaces.ICrudRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class ServiceRecordMongoImpl implements ICrudRecord {
@@ -15,7 +16,9 @@ public class ServiceRecordMongoImpl implements ICrudRecord {
 
     @Override
     public Record create(Record record) {
-        return null;
+        record.setCreated_at(LocalDateTime.now());
+        record.setModified_at(LocalDateTime.now());
+        return repository.save(record);
     }
 
     @Override
