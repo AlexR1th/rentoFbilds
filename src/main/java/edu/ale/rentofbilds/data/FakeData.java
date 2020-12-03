@@ -61,14 +61,11 @@ public class FakeData {
                     LocalDateTime.now(), LocalDateTime.now())
     ).collect(Collectors.toList());
 
-    @PostConstruct
-    void init(){
+    //   @PostConstruct
+    void init() {
         recordRepository.deleteAll();
         recordRepository.saveAll(records);
     }
-
-
-
 
     public List<Client> getClients() {
         return clients;
@@ -100,5 +97,10 @@ public class FakeData {
 
     public void setRecords(List<Record> records) {
         this.records = records;
+    }
+
+    public List<Record> renewRecords() {
+        recordRepository.deleteAll();
+        return recordRepository.saveAll(records);
     }
 }

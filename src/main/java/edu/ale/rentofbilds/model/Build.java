@@ -6,6 +6,7 @@ import java.util.Objects;
 public class Build {
     private String id;
     private String name;
+    private int area;
     private String description;
     private LocalDateTime created_at;
     private LocalDateTime modified_at;
@@ -20,9 +21,31 @@ public class Build {
         this.modified_at = modified_at;
     }
 
+    public Build(String name, int area, String description, LocalDateTime created_at, LocalDateTime modified_at) {
+        this.name = name;
+        this.area = area;
+        this.description = description;
+        this.created_at = created_at;
+        this.modified_at = modified_at;
+    }
+
     public Build(String id, String name, String description, LocalDateTime created_at, LocalDateTime modified_at) {
         this.id = id;
         this.name = name;
+        this.description = description;
+        this.created_at = created_at;
+        this.modified_at = modified_at;
+    }
+
+    public Build(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public Build(String id, String name, int area, String description, LocalDateTime created_at, LocalDateTime modified_at) {
+        this.id = id;
+        this.name = name;
+        this.area = area;
         this.description = description;
         this.created_at = created_at;
         this.modified_at = modified_at;
@@ -42,6 +65,14 @@ public class Build {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getArea() {
+        return area;
+    }
+
+    public void setArea(int area) {
+        this.area = area;
     }
 
     public String getDescription() {
@@ -86,6 +117,7 @@ public class Build {
         return "Build{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", area=" + area +
                 ", description='" + description + '\'' +
                 ", created_at=" + created_at +
                 ", modified_at=" + modified_at +

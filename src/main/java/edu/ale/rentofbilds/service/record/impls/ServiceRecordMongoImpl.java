@@ -1,6 +1,7 @@
 package edu.ale.rentofbilds.service.record.impls;
 
 import edu.ale.rentofbilds.Repository.RecordRepository;
+import edu.ale.rentofbilds.data.FakeData;
 import edu.ale.rentofbilds.model.Record;
 import edu.ale.rentofbilds.service.record.intefaces.ICrudRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,21 +24,28 @@ public class ServiceRecordMongoImpl implements ICrudRecord {
 
     @Override
     public Record get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override
     public Record update(Record record) {
-        return null;
+        record.setModified_at(LocalDateTime.now());
+        return repository.save(record);
     }
 
     @Override
     public Record delete(String id) {
-        return null;
+        Record record = this.get(id);
+        repository.deleteById(id);
+        return record;
     }
 
     @Override
     public List<Record> getAll() {
         return repository.findAll();
+    }
+
+    public void renew() {
+
     }
 }

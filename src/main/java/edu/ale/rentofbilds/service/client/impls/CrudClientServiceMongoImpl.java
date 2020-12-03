@@ -13,6 +13,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,8 +35,10 @@ public class CrudClientServiceMongoImpl implements ICrudClientService {
 //        return repository.save(client);
 //    }
 
-//    @PostConstruct
-//    void init() {
+    @PostConstruct
+    void init() {
+        System.out.println(this.getGroupedByGender());
+    }
 //        repository.deleteAll();
 //        list = trash.getClients();
 //        list.size();
@@ -109,6 +113,7 @@ public class CrudClientServiceMongoImpl implements ICrudClientService {
 
         return sortedById;
     }
+
     public Object getAllSortedByPhone() {
         List<Client> list = repository.findAll();
         List<Client> sortedByPhone = list.stream()
@@ -117,10 +122,18 @@ public class CrudClientServiceMongoImpl implements ICrudClientService {
 
         return sortedByPhone;
     }
+
     public List<Client> getByName(String name) {
-        if(name.equals(""))return this.getAll();
+        if (name.equals("")) return this.getAll();
         return this.getAll().stream().filter(client -> client.getName().contains(name))
                 .collect(Collectors.toList());
+    }
+
+    public Map<String, Long> getGroupedByGender() {
+
+        return this.getAll().stream()
+                .collect(Collectors.groupingBy(Client::getGender, Collectors.counting()));
+
     }
 
 }

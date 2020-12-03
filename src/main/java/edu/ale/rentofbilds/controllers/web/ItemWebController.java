@@ -3,12 +3,14 @@ package edu.ale.rentofbilds.controllers.web;
 import edu.ale.rentofbilds.form.SearchForm;
 import edu.ale.rentofbilds.model.Item;
 import edu.ale.rentofbilds.service.item.impls.CrudItemMongoImpl;
+import edu.project.rent.forms.ItemForm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import edu.project.rent.forms.ItemForm;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/web/item")

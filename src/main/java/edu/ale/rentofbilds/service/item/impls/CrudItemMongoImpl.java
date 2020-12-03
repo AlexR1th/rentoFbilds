@@ -95,10 +95,29 @@ public class CrudItemMongoImpl implements ICrudItem {
     }
 
     public List<Item> getByName(String name) {
-        if (name.equals(""))return this.getAll();
-        return this.getAll().stream().filter(item -> item.getName().contains(name))
-                .collect(Collectors.toList());
+        if (name.equals("")) return this.getAll();
+//        return this.getAll().stream().filter(item -> item.getName().contains(name))
+//                .collect(Collectors.toList());
+        return repository.findByNameContaining(name);
     }
+
+    public List<Item> getByNameAndDesc(String name, String description) {
+  //  самый тупой метод !!!!
+//        return this.getAll().stream()
+//                .filter(item -> item.getName().equals(name))
+//                .filter(item -> item.getDescription().equals(description))
+//                .collect(Collectors.toList());
+
+// менее тупее и легче проходит ну вы поняли! в памяти !
+        return this.getAll().stream()
+                .filter(item -> (item.getName().equals(name)
+                        &&
+                        item.getDescription().equals(description)))
+                .collect(Collectors.toList());
+//        return repository.findByNameAndDescription(name, description);
+    }
+
+
 }
 
 
